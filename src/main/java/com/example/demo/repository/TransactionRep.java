@@ -10,12 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-@Transactional
 public interface TransactionRep extends JpaRepository<Transaction, Long> {
-
-    LocalDate getOperationTime();
-
-    BigDecimal getAmount();
-
-    List<Transaction> findAllByOperationDateBetween(LocalDate startDate, LocalDate endDate);
+    LocalDate now = LocalDate.now();
+    List<Transaction> findByLocalDate(int year, int month);
 }

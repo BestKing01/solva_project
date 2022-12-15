@@ -22,11 +22,7 @@ public class Transaction {
 
     private BigDecimal amount;
 
-    @Enumerated(EnumType.STRING)
     private Currency currency;
 
-    private String category;
-
-    private boolean exceeded;
     // Constructor and getter/setter
 }
