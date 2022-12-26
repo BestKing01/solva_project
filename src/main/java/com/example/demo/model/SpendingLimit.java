@@ -14,14 +14,16 @@ public class SpendingLimit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
 
-    @Column(name = "goods_limit")
-    private Double goodsLimit;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Transaction transaction;
 
-    @Column(name = "services_limit")
-    private Double servicesLimit;
+    @Column(nullable = false, columnDefinition = "double default 0")
+    private double goodsLimit;
+
+    @Column(nullable = false, columnDefinition = "double default 0")
+    private double servicesLimit;
 
     // конструктор без параметров, инициализирующий лимиты нулевыми значениями
     public SpendingLimit() {

@@ -20,9 +20,17 @@ public class Transaction {
     @Column(name = "operation_time")
     private LocalDateTime operationTime;
 
-    private BigDecimal amount;
+    private double amount;
 
     private Currency currency;
+
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    private boolean limitExceeded;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private SpendingLimit spendingLimit;
+
 
     // Constructor and getter/setter
 }
